@@ -1,5 +1,5 @@
 // twitterlib.js (c) 2011 Remy Sharp
-// @version 1.1.3 / Thu May 23 06:30:34 2013 -0700
+// @version 1.1.3 / Tue Jun 4 17:10:00 2013 +0800
 // MIT license: http://rem.mit-license.org
 (function (global) {
   var twitterlib = {};
@@ -68,7 +68,7 @@
       },
       protocol = document.location.protocol.substr(0, 4) === 'http' ? document.location.protocol : 'http:',
       URLS = {
-        search: protocol + '//twitter.com/search.json?q=%search%&page=%page|1%&rpp=%limit|100%&since_id=%since|remove%&result_type=recent&include_entities=true', // TODO allow user to change result_type
+        search: protocol + '//search.twitter.com/search.json?q=%search%&page=%page|1%&rpp=%limit|100%&since_id=%since|remove%&result_type=recent&include_entities=true', // TODO allow user to change result_type
         timeline: protocol + '//api.twitter.com/1/statuses/user_timeline.json?screen_name=%user%&count=%limit|200%&page=%page|1%&since_id=%since|remove%include_rts=%rts|false%&include_entities=true',
         list: protocol + '//api.twitter.com/1/%user%/lists/%list%/statuses.json?page=%page|1%&per_page=%limit|200%&since_id=%since|remove%&include_entities=true&include_rts=%rts|false%',
         favs: protocol + '//api.twitter.com/1/favorites/%user%.json?include_entities=true&skip_status=true&page=%page|1%&since_id=%since|remove%',
@@ -310,7 +310,7 @@
       },
 
       format: function (search, caseSensitive) {
-        // search can match twitter.com format
+        // search can match search.twitter.com format
         var blocks = [], ors = [], ands = [], i = 0, negative = [], since = '', until = '';
 
         search.replace(/(-?["'](.*?)["']|\S+)/g, function (m) { // removed \b for chinese character support
@@ -584,7 +584,7 @@
   }
 
   twitterlib = {
-    version: '1.1.3', //@version 1.1.3 / Thu May 23 06:30:34 2013 -0700
+    version: '1.1.3', //@version 1.1.3 / Tue Jun 4 17:10:00 2013 +0800
     // search is an exception case
     custom: custom,
     getUrl: getUrl,
